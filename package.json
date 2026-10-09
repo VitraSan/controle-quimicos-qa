@@ -1,0 +1,38 @@
+{
+  "name": "controle-quimicos",
+  "version": "1.0.0",
+  "description": "Sistema de requisição de produtos químicos com regra FEFO, controle de validade e fechamento automático, com suíte de testes unitários, de API e E2E.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node --no-warnings src/server.js",
+    "test": "node --no-warnings node_modules/jest/bin/jest.js",
+    "test:unit": "npm test -- tests/unit",
+    "test:api": "npm test -- tests/api",
+    "test:coverage": "npm test -- --coverage",
+    "test:e2e": "playwright test",
+    "test:all": "npm test && npm run test:e2e"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "jest": "^30.2.0",
+    "supertest": "^7.1.4"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "<rootDir>/tests/unit/**/*.test.js",
+      "<rootDir>/tests/api/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/server.js"
+    ]
+  }
+}
