@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Controle de Químicos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topo">
+      <h1>Controle de Químicos</h1>
+      <span class="sub">Requisição de produtos químicos para a produção</span>
+    </header>
+
+    <main>
+      <section class="cartao">
+        <h2>Nova requisição</h2>
+        <form id="form-requisicao" novalidate>
+          <label>Produto
+            <select name="produto_id" data-testid="campo-produto" required></select>
+          </label>
+          <label>Quantidade
+            <input name="quantidade" type="number" min="0" step="0.001" data-testid="campo-quantidade" required />
+          </label>
+          <label>Solicitante
+            <input name="solicitante" type="text" data-testid="campo-solicitante" required />
+          </label>
+          <label>Setor
+            <select name="setor" data-testid="campo-setor" required>
+              <option value="">Selecione</option>
+              <option>Pintura</option>
+              <option>Montagem final</option>
+              <option>Funilaria</option>
+              <option>Qualidade</option>
+            </select>
+          </label>
+          <button type="submit" data-testid="btn-solicitar">Solicitar</button>
+        </form>
+        <div id="mensagem" role="alert" data-testid="mensagem"></div>
+        <div id="sugestao" data-testid="sugestao-fefo"></div>
+      </section>
+
+      <section class="cartao">
+        <h2>Estoque do almoxarifado</h2>
+        <table data-testid="tabela-estoque">
+          <thead>
+            <tr><th>Código</th><th>Produto</th><th>Lote</th><th>Validade</th><th>Saldo</th><th>Situação</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="cartao">
+        <div class="titulo-linha">
+          <h2>Requisições</h2>
+          <label class="filtro">Status
+            <select id="filtro-status" data-testid="filtro-status">
+              <option value="">Todos</option>
+              <option value="PENDENTE">Pendente</option>
+              <option value="ATENDIDA">Atendida</option>
+              <option value="CANCELADA">Cancelada</option>
+            </select>
+          </label>
+        </div>
+        <table data-testid="tabela-requisicoes">
+          <thead>
+            <tr><th>#</th><th>Produto</th><th>Qtd</th><th>Solicitante</th><th>Setor</th><th>Abertura</th><th>Status</th><th></th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+
+    <dialog id="dialogo-cancelar" data-testid="dialogo-cancelar">
+      <form method="dialog" id="form-cancelar">
+        <h3>Cancelar requisição <span id="cancelar-id"></span></h3>
+        <label>Motivo
+          <textarea name="motivo" rows="3" data-testid="campo-motivo"></textarea>
+        </label>
+        <div id="erro-cancelar" class="erro" data-testid="erro-cancelar"></div>
+        <div class="acoes">
+          <button value="voltar" formnovalidate>Voltar</button>
+          <button value="confirmar" data-testid="btn-confirmar-cancelamento">Confirmar cancelamento</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>

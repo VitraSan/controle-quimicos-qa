@@ -1,0 +1,70 @@
+:root {
+  --fundo: #f4f6f8;
+  --cartao: #ffffff;
+  --texto: #1f2933;
+  --suave: #616e7c;
+  --borda: #d9e2ec;
+  --primaria: #1f6f5c;
+  --ok: #2f855a;
+  --alerta: #b7791f;
+  --perigo: #c53030;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+}
+
+.topo {
+  background: #102a43;
+  color: #fff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.topo h1 { margin: 0; font-size: 1.3rem; }
+.topo .sub { color: #bcccdc; font-size: 0.9rem; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+
+.cartao { background: var(--cartao); border: 1px solid var(--borda); border-radius: 8px; padding: 16px; overflow-x: auto; }
+.cartao h2 { margin: 0 0 12px; font-size: 1.05rem; }
+.titulo-linha { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+
+form#form-requisicao { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; align-items: end; }
+label { display: grid; gap: 4px; font-size: 0.85rem; color: var(--suave); }
+input, select, textarea { font: inherit; padding: 8px; border: 1px solid var(--borda); border-radius: 6px; color: var(--texto); background: #fff; width: 100%; }
+input, select { height: 38px; }
+label.filtro select { width: auto; }
+
+button { font: inherit; height: 38px; padding: 0 14px; border-radius: 6px; border: 0; background: var(--primaria); color: #fff; cursor: pointer; }
+button.secundario { background: transparent; color: var(--perigo); border: 1px solid var(--perigo); height: auto; padding: 4px 10px; }
+
+#mensagem { margin-top: 12px; }
+#mensagem.erro, .erro { color: var(--perigo); }
+#mensagem.sucesso { color: var(--ok); }
+#sugestao { margin-top: 6px; font-size: 0.9rem; }
+
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--borda); white-space: nowrap; }
+th { color: var(--suave); font-weight: 600; }
+td.vazio { text-align: center; color: var(--suave); }
+
+tr.validade-VENCIDO td { background: #fff5f5; }
+tr.validade-A_VENCER td { background: #fffaf0; }
+
+.selo, .status { font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; }
+.selo-OK, .status-ATENDIDA { background: #e3f9e5; color: var(--ok); }
+.selo-A_VENCER, .status-PENDENTE { background: #fff3c4; color: var(--alerta); }
+.selo-VENCIDO, .status-CANCELADA { background: #ffe3e3; color: var(--perigo); }
+
+dialog { border: 1px solid var(--borda); border-radius: 8px; padding: 20px; width: min(420px, 92vw); }
+dialog h3 { margin-top: 0; }
+dialog .acoes { display: flex; justify-content: flex-end; gap: 8px; margin-top: 12px; }
+dialog .acoes button[value='voltar'] { background: transparent; color: var(--texto); border: 1px solid var(--borda); }
